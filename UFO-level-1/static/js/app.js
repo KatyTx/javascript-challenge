@@ -1,5 +1,5 @@
 // from data.js
-// from data.js
+
 //var tableData = data;
 // reference for table body
 let tbody = d3.select("tbody");
@@ -26,7 +26,7 @@ function uploaddata(data) {
         });
     })
     );
-
+    //run function to upload data
     uploaddata(data);
 
     // Select the button
@@ -38,6 +38,7 @@ function uploaddata(data) {
     button.on("click", filteredInfo);
     d3.select("form").on("submit", filteredInfo)
 
+    //function to filter data
     function filteredInfo() {
 
         // Select the input element and get the raw HTML node
@@ -46,11 +47,14 @@ function uploaddata(data) {
         // Get the value property of the input element
         var inputValue = inputElement.property("value");
 
+        //console log the input value to verify
         console.log(inputValue);
         //console.log(tableData);
 
+        //filter the data and console log the filtered info
         var filteredData = data.filter(sighting => sighting.datetime === inputValue);
         console.log(filteredData);
 
+        //function to upload data from filtered input
         uploaddata(filteredData);
     };
